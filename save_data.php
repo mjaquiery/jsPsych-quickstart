@@ -22,7 +22,14 @@ if(!preg_match("/^[0-9a-zA-Z]+$/", $participant_id)) {
 // This may need changing if you don't use Frankfurt (DE) for your data storage
 $url = "https://files.de-1.osf.io/v1/resources/$WHERE_TO_SAVE/providers/osfstorage/?kind=file&name=$participant_id.csv";
 
-// cURL example adapted from https://stackoverflow.com/a/5676572
+/*
+ * The cURL request below is adapted from https://stackoverflow.com/a/5676572
+ * We create a request to the $url above, with the following key properties:
+ * - PUT method (because we're creating a file)
+ * - Authorization header with the token
+ * - Body content of the file we want to create
+ */
+
 // open connection
 $ch = curl_init();
 
